@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">  
+    <title></title>
+    <style media="screen">
+        
+        @import url('https://fonts.googleapis.com/css?family=Share');
+        @import url('https://fonts.googleapis.com/css?family=Hammersmith+One');
+        @import url('https://fonts.googleapis.com/css?family=Advent+Pro');
+
+        body{
+            background: linear-gradient(332deg, #F49047,#2A34E2);
+            background-size: 400% 400%;
+            animation: backgroundGradient 20s ease infinite;
+            text-align: center;
+            overflow: hidden;
+        }
+        .bg-texture{
+            width: 100%;
+            height: 100vh;
+            background-image: url(images/texture.png);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-position: top;
+            top: 0;
+            left: 0;
+            opacity: .6;
+        }
+        @keyframes backgroundGradient{
+            0%{
+                background-position: 0% 50%;
+            }
+            50%{
+                background-position: 100% 50%;
+            }
+            100%{
+                background-position: 0% 50%;
+            }
+        }
+        .flex-main{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            transform: translate(-50%,-50%);
+            display: flex;
+            box-sizing: border-box;
+            flex-direction: row;
+            width: 90%;
+            -webkit-box-shadow: 0px 0px 25px 5px rgba(0,0,0,0.28);
+            -moz-box-shadow: 0px 0px 25px 5px rgba(0,0,0,0.28);
+            box-shadow: 0px 0px 25px 5px rgba(0,0,0,0.28);
+        }
+        .flex-left{
+            flex: 1;
+            width: 50%;
+            height: 90vh;
+            position: relative;
+            background-color: #232323;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            overflow: hidden;
+        }
+        .flex-right{
+            flex: 1;
+            width: 50%;
+            height: 90vh;
+            position: relative;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            overflow: scroll;
+            text-align: center;
+            font-family: 'Share', cursive;
+            background-color: RGBA(242, 242, 242, .6);
+        }
+        #todos h2{
+            position: fixed;
+            z-index: 2;
+            width: 50%;
+            margin: 0 auto;
+            top:0;
+            right:0;
+            height: 70px;
+            line-height: 70px; 
+            background-color: #F2F2F2;
+            -webkit-box-shadow: 0px 3px 12px 1px rgba(0,0,0,0.1);
+            -moz-box-shadow: 0px 3px 12px 1px rgba(0,0,0,0.1);
+            box-shadow: 0px 3px 12px 1px rgba(0,0,0,0.1);
+            border-top-right-radius: 20px;
+        }
+        #todos span{
+            position: fixed;
+            top: 50%;
+            transform: translateX(-50%);
+            opacity: .45;
+            pointer-events: none;
+            transition: .3s;
+            font-size: 1.3em;
+        }
+        #todos{
+            margin-top: 80px;
+        }
+        
+        #todos p{
+            border-bottom: 5px solid RGBA(242, 242, 242, .6);
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+        
+        #todos p:nth-child(odd){
+            animation: slideInRight .5s forwards;
+        }
+        #todos p:nth-child(even){
+            animation: slideInLeft .5s forwards;
+        }
+        @keyframes slideInRight {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }    
+        i.fab{
+            color: aliceblue;
+            font-size: 50px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 20px;
+            opacity: .5;
+            transition: .3s;
+            cursor: pointer;
+            transform: scale(1.1);
+        }
+        i.fab:hover{
+            transform: scale(1.2);
+            opacity: .7;
+        }
+        i.fab:active{
+            transform: scale(1);
+        }
+        .flex-left h1{
+            font-family: 'Hammersmith One', sans-serif;
+            text-transform: uppercase;
+            text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+            color: #FFFFFF;
+            font-size: 2em;
+            font-weight: lighter;
+        }
+        .meme img{
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 200px;
+            animation: slideUp 2s 1;
+            pointer-events: none;
+        }
+        .flex-right .meme img{
+            display: none;
+        } 
+        .bottom-note h2{
+            font-family: 'Advent Pro', sans-serif;
+            color: #F2F2F2;
+            position: absolute;
+            line-height: 20vh;
+            left: 50%;
+            font-size: 1.5em;
+            transform: translateX(-50%);
+        }
+        .footer-note{
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Advent Pro', sans-serif;
+            letter-spacing: .15em;
+            font-weight: bold;
+        }
+        @keyframes slideUp{
+            0%{
+                bottom: -100vh;
+            }
+            
+            100%{
+                bottom: 0;
+            }
+        }
+        @keyframes slideDown{
+            0%{
+                bottom: 0;
+            }
+            
+            100%{
+                bottom: -100vh;
+            }
+        }
+        form{
+            padding: 20px;
+        }
+        form input{
+            width: 50%;
+            padding: 20px;
+            border: none;
+            outline: none;
+        }
+        form button{
+            padding: 20px;
+            border: none;
+            outline: none;
+            background-color: #A4FB32;
+            transition: .3s;
+            cursor: pointer;
+        }
+        form button:hover{
+            background-color: #DFE3E6;
+            color: #232323;
+        }
+        label{
+            cursor: pointer;
+            color: #F49047;
+            transition: .3s;
+            font-family: 'Hammersmith One', sans-serif;
+            font-weight: lighter;
+            padding: 10px;
+        }
+        label:hover{
+            color: #DFE3E6;
+        }
+        label input{
+            display: none;
+        }
+        .center-form{
+            width: 90%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+        @media screen and (max-width:768px) {
+        .flex-main{
+            flex-direction: column;
+        }
+        .flex-left{
+            width: 100%;
+            height: 45vh;
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 0px;
+        }
+        .flex-right{
+            width: 100%;
+            height: 45vh;
+            border-top-right-radius: 0px;
+            border-bottom-left-radius: 20px;
+        }
+        #todos h2{
+            margin: 0 auto;
+            top:50%;
+            width: 100%;
+            border-top-right-radius: 0px;
+        }
+        i.fab{
+            color: aliceblue;
+            font-size: 40px;
+        }
+        .flex-left h1{
+            font-size: 1.6em;
+        }
+        .meme img{
+            width: 160px;
+            bottom: 0;
+        }
+        .flex-left .meme img{
+            display: none;
+        }
+        .flex-right .meme img{
+            display: block;
+        }    
+        #todos span{
+            position: absolute;
+            font-size: 1.1em;
+            top: 100px;
+        } 
+        .bottom-note h2{
+            bottom: 0;
+            line-height: 30px;
+        }
+        .footer-note{
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Advent Pro', sans-serif;
+            letter-spacing: 0em;
+        }    
+        }
+    </style>
+  </head>
+  <body>
+      <div class="bg-texture"></div>
+          <div class="flex-main">
+          <div class="flex-left">
+              <h1>Todo&#45;List</h1>
+                <div class="bottom-note">
+                  <h2>Get sh🤭t done&#33;</h2>
+                </div> 
+              <div class="center-form">
+              <form id="new-todo">
+              <input placeholder="What needs to be done?" name="text"><button type="submit">Add Todo</button><br><br>
+                <label><input type="checkbox" id="hide-completed">Hide completed</label>
+                <label><input type="checkbox" id="delete-all">Delete All</label>  
+              </form>
+              </div>
+              <div class="meme memeLeft">
+                <img src="images/just%20do%20it.gif">
+              </div>
+            <!--
+            <a href="#" target="_blank">
+                <i class="fab fa-github" title="Find the source code on my GitHub"></i>
+            </a>
+-->
+          </div>
+          <div class="flex-right">
+                <span></span>
+              <div id="todos">
+<!--                <h2>You have nothing on your list</h2> -->
+<!--
+                  <p>BEGIN</p>
+                  <p>Todo text sample</p>
+                  <p>Todo text sample</p>
+                  <p>Todo text sample</p>
+                  <p>Todo text sample</p>
+                  <p>Todo text sample</p>
+                  <p>Todo text sample</p>
+                  <p>Todo text sample</p>
+                  <p>Todo text sample</p>
+                  <p>Todo text sample</p>
+                  <p>Todo text sample</p>
+                  <p>Todo text sample</p>
+                  <p>Todo text sample</p>
+                  <p>Todo text sample</p>
+                  <p>Todo text sample</p>
+                  <p>END</p>
+-->
+              </div>
+              <div class="meme memeRight">
+                <img src="images/just%20do%20it.gif">
+              </div>
+          </div>
+      </div>
+      <p class="footer-note">Coded and Designed by Anup</p>
+      <script src="script/todo.js"></script>
+  </body>
+</html>
