@@ -107,36 +107,35 @@
         #todos{
             margin-top: 80px;
         }
-        
-        #todos p{
+        .new-todo-div{
             border-bottom: 5px solid RGBA(242, 242, 242, .6);
             width: 90%;
-            margin: auto;
-            padding: 10px;
+            margin: 5px auto;
+            padding: 5px;
         }
-        
-        #todos p:nth-child(odd){
-            animation: slideInRight .5s forwards;
+        .delete-todo{
+            float: right;
+            position: relative;
+            height: 25px;
+            width: 25px;
+            border: none;
+            position: relative;
+            transform: translateY(-140%);
+            cursor: pointer;
         }
-        #todos p:nth-child(even){
-            animation: slideInLeft .5s forwards;
+        .custom-label{
+            width: 20px;
+            height: 20px;
+            position: relative;
+            transform: translateY(55%);
+            border: solid #eee;
+            float: left;
+            cursor: pointer;
         }
-        @keyframes slideInRight {
-            from {
-                transform: translateX(-100%);
-            }
-            to {
-                transform: translateX(0);
-            }
+        .custom-label input{
+            display: none;
         }
-        @keyframes slideInLeft {
-            from {
-                transform: translateX(100%);
-            }
-            to {
-                transform: translateX(0);
-            }
-        }    
+           
         i.fab{
             color: aliceblue;
             font-size: 50px;
@@ -214,17 +213,11 @@
                 bottom: 0;
             }
         }
-        @keyframes slideDown{
-            0%{
-                bottom: 0;
-            }
-            
-            100%{
-                bottom: -100vh;
-            }
-        }
         form{
             padding: 20px;
+            -webkit-box-shadow: 0px 10px 23px 2px rgba(0,0,0,0.5);
+            -moz-box-shadow: 0px 10px 23px 2px rgba(0,0,0,0.5);
+            box-shadow: 0px 10px 23px 2px rgba(0,0,0,0.5);
         }
         form input{
             width: 50%;
@@ -244,7 +237,7 @@
             background-color: #DFE3E6;
             color: #232323;
         }
-        label{
+        form label{
             cursor: pointer;
             color: #F49047;
             transition: .3s;
@@ -255,7 +248,7 @@
         label:hover{
             color: #DFE3E6;
         }
-        label input{
+        form label input{
             display: none;
         }
         .center-form{
@@ -330,7 +323,7 @@
           <div class="flex-left">
               <h1>Todo&#45;List</h1>
                 <div class="bottom-note">
-                  <h2>Get sh🤭t done&#33;</h2>
+                  <h2>Get it done&#33;</h2>
                 </div> 
               <div class="center-form">
               <form id="new-todo">

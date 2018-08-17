@@ -1,6 +1,6 @@
 let todos = [];
 
-const filters = {hideCompleted:false};
+const filters = {hideCompleted:false,deleteAll:false};
 
 const renderTodos = function(todos,filters){
     
@@ -41,9 +41,28 @@ const renderTodos = function(todos,filters){
     
     
     filteredTodos.filter(function(todo){
-        const inputTextRender = document.createElement('p');
-        inputTextRender.textContent = todo.text;
-        document.querySelector('#todos').appendChild(inputTextRender);
+        
+        const newTodoDiv = document.createElement('div');
+        newTodoDiv.setAttribute("class","new-todo-div")
+        
+            const label = document.createElement('label');
+            label.setAttribute("class","custom-label")
+            
+            const checkBox = document.createElement('input');
+            checkBox.setAttribute("id","todo-check-Box");
+            checkBox.type = "checkbox";
+            label.appendChild(checkBox);
+            newTodoDiv.appendChild(label);
+        
+            const inputTextRender = document.createElement('p');
+            inputTextRender.textContent = todo.text;
+            newTodoDiv.appendChild(inputTextRender);
+            
+            const button = document.createElement('button');
+            button.textContent = "X";
+            button.setAttribute("class","delete-todo");
+            newTodoDiv.appendChild(button);
+        document.querySelector('#todos').appendChild(newTodoDiv);
     });
 }
 renderTodos(todos,filters);
